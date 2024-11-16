@@ -37,6 +37,7 @@ public class CarManager {
                 winner.clear();
                 maxDistance = car.getDistance();
                 winner.add(car.getName());
+                continue;
             }
             if (car.getDistance() == maxDistance) {
                 winner.add(car.getName());
