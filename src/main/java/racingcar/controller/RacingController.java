@@ -9,6 +9,9 @@ public class RacingController {
     public void start() {
         inputView.printInputMessage();
         inputView.racingCarNameInput();
+
+        inputView.printTryNumberMessage();
+        inputView.tryNumberInput();
     }
 
 }
