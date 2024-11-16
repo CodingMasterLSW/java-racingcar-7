@@ -13,7 +13,7 @@ public class InputParser {
         return new InputParser();
     }
 
-    public List split(String userInput) {
+    public List<String> split(String userInput) {
         return List.of(userInput.split(SPLITTER));
     }
 }
