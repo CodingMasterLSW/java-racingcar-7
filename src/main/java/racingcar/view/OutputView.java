@@ -8,6 +8,7 @@ public class OutputView {
     private static final String RUN_RESULT_MESSAGE = "실행 결과";
     private static final String WINNER_MESSAGE = "최종 우승자 : %s";
     private static final String HISTOGRAM = "-";
+    private static final String RACING_RESULT = "%s : %s";
 
     private OutputView() {
     }
@@ -23,8 +24,7 @@ public class OutputView {
 
     public void printRacingResult(List<Car> racingResult) {
         for (Car car : racingResult) {
-            System.out.print(car.getName()+ " : ");
-            convertToHistogram(car.getDistance());
+            System.out.printf(RACING_RESULT, car.getName(), convertToHistogram(car.getDistance()));
             printBlank();
         }
         printBlank();
@@ -34,15 +34,15 @@ public class OutputView {
         System.out.printf(WINNER_MESSAGE, String.join(", ", winners));
     }
 
-    private void convertToHistogram(int distance) {
-        System.out.print(HISTOGRAM.repeat(distance));
+    private String convertToHistogram(int distance) {
+        return HISTOGRAM.repeat(distance);
     }
 
     private void printMessage(String message) {
         System.out.println(message);
     }
 
-    private void printBlank(){
+    private void printBlank() {
         System.out.println();
     }
 
