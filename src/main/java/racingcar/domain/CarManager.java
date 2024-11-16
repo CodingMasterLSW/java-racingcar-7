@@ -3,6 +3,7 @@ package racingcar.domain;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class CarManager {
 
@@ -30,20 +31,14 @@ public class CarManager {
     }
 
     public List<String> findWinner() {
-        List<String> winner = new ArrayList<>();
-        int maxDistance = 0;
-        for (Car car : cars) {
-            if (car.getDistance() > maxDistance) {
-                winner.clear();
-                maxDistance = car.getDistance();
-                winner.add(car.getName());
-                continue;
-            }
-            if (car.getDistance() == maxDistance) {
-                winner.add(car.getName());
-            }
-        }
-        return winner;
+        int maxDistance = cars.stream()
+                .mapToInt(Car::getDistance)
+                .max()
+                .orElse(0);
+        return cars.stream()
+                .filter(car -> car.getDistance() == maxDistance)
+                .map(Car::getName)
+                .collect(Collectors.toList());
     }
 
     public List<Car> getCars() {
