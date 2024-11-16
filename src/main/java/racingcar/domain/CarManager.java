@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -25,6 +26,22 @@ public class CarManager {
 
     public int getCarsSize() {
         return cars.size();
+    }
+
+    public List<String> findWinner() {
+        List<String> winner = new ArrayList<>();
+        int maxDistance = 0;
+        for (Car car : cars) {
+            if (car.getDistance() > maxDistance) {
+                winner.clear();
+                maxDistance = car.getDistance();
+                winner.add(car.getName());
+            }
+            if (car.getDistance() == maxDistance) {
+                winner.add(car.getName());
+            }
+        }
+        return winner;
     }
 
     public List<Car> getCars() {
