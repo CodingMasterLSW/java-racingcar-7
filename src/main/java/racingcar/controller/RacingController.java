@@ -20,18 +20,20 @@ public class RacingController {
     }
 
     public void start() {
-        String userInput = manageCarInput();
+        manageCarInput();
         int tryNumber = manageTryNumberInput();
 
-        racingService.initCarManager(userInput);
         playRacing(tryNumber);
         winner();
     }
 
-    private String manageCarInput() {
+    private void manageCarInput() {
         inputView.printInputMessage();
-        String userInput = retryOnInvalidInput(() -> inputView.racingCarNameInput());
-        return userInput;
+        retryOnInvalidInput(() -> {
+            String userInput = inputView.racingCarNameInput();
+            racingService.initCarManager(userInput);
+            return null;
+        });
     }
 
     private int manageTryNumberInput() {
