@@ -16,12 +16,13 @@ public class CarManager {
         return new CarManager(cars);
     }
 
-    public void moveCars(List<Integer> randomNumbers) {
+    public List<Car> moveCars(List<Integer> randomNumbers) {
         int idx = 0;
         for (Car car : cars) {
             car.move(randomNumbers.get(idx));
             idx++;
         }
+        return getCars();
     }
 
     public int getCarsSize() {

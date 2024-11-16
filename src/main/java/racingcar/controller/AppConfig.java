@@ -5,6 +5,7 @@ import racingcar.service.RacingService;
 import racingcar.utils.InputParser;
 import racingcar.utils.RandomNumber;
 import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 public class AppConfig {
 
@@ -13,7 +14,7 @@ public class AppConfig {
     }
 
     public static RacingController createRacingController() {
-        return new RacingController(InputView.create(), createRacingService());
+        return new RacingController(InputView.create(), OutputView.create(), createRacingService());
     }
 
 

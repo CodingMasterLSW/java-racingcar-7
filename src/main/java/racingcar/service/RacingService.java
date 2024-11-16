@@ -26,8 +26,8 @@ public class RacingService {
         carManager = CarManager.from(generateCars);
     }
 
-    public void racing(List<Integer> randomNumbers) {
-        carManager.moveCars(randomNumbers);
+    public List<Car> racing(List<Integer> randomNumbers) {
+        return carManager.moveCars(randomNumbers);
     }
 
     public List<Integer> generateRandomNumbers(){
