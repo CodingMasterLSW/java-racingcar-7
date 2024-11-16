@@ -2,6 +2,8 @@ package racingcar.utils;
 
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
+import java.util.List;
 
 public class RandomNumber {
 
@@ -15,8 +17,13 @@ public class RandomNumber {
         return new RandomNumber();
     }
 
-    public int generate() {
-        return Randoms.pickNumberInRange(MIN_NUM, MAX_NUM);
+    public List<Integer> generate(int numberSize) {
+        List<Integer> randomNumbers = new ArrayList<>();
+        for (int i=0; i<numberSize; i++) {
+            randomNumbers.add(Randoms.pickNumberInRange(MIN_NUM, MAX_NUM));
+        }
+        return randomNumbers;
     }
+
 
 }
