@@ -1,5 +1,7 @@
 package racingcar.view;
 
+import static racingcar.exception.ErrorMessage.INVALID_INPUT;
+
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
@@ -14,16 +16,28 @@ public class InputView {
     }
 
     public String racingCarNameInput() {
-        String userInput = Console.readLine();
-        return userInput;
+        return inputAndValidate();
     }
 
     public void printInputMessage() {
         printMessage(INPUT_MESSAGE);
     }
 
+    private String inputAndValidate() {
+        String userInput = Console.readLine();
+        validateEmptyInput(userInput);
+        return userInput;
+    }
+
     private void printMessage(String message) {
         System.out.println(message);
+    }
+
+    private void validateEmptyInput(String userInput) {
+        if (userInput.isBlank() || userInput == null) {
+            throw new IllegalArgumentException(INVALID_INPUT.getMessage());
+        }
+
     }
 
 }
