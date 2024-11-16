@@ -78,4 +78,49 @@ public class CarManagerTest {
             assertThat(car.getDistance()).isEqualTo(1);
         }
     }
+
+    @DisplayName("5,6,7 이 주어졌을 경우, 우승자는 pobi, jenny, jisu다")
+    @Test
+    void all_winner_case() {
+        //given
+        List<Integer> randomNumbers = List.of(5, 6, 7);
+
+        //when
+        carManager.moveCars(randomNumbers);
+        List<String> winner = carManager.findWinner();
+
+        //then
+        List<String> expectedWinner = List.of("pobi", "jenny", "jisu");
+        assertThat(winner.containsAll(expectedWinner));
+    }
+
+    @DisplayName("4,5,6 이 주어졌을 경우, 우승자는 jenny, jisu다")
+    @Test
+    void two_winner_case() {
+        //given
+        List<Integer> randomNumbers = List.of(4, 5, 6);
+
+        //when
+        carManager.moveCars(randomNumbers);
+        List<String> winner = carManager.findWinner();
+
+        //then
+        List<String> expectedWinner = List.of("jenny", "jisu");
+        assertThat(winner.containsAll(expectedWinner));
+    }
+
+    @DisplayName("3,4,5 가 주어졌을 경우, 우승자는 jisu다")
+    @Test
+    void one_winner_case() {
+        //given
+        List<Integer> randomNumbers = List.of(3, 4, 6);
+
+        //when
+        carManager.moveCars(randomNumbers);
+        List<String> winner = carManager.findWinner();
+
+        //then
+        List<String> expectedWinner = List.of("jisu");
+        assertThat(winner.containsAll(expectedWinner));
+    }
 }
