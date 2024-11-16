@@ -33,4 +33,8 @@ public class RacingService {
     public List<Integer> generateRandomNumbers(){
         return randomNumber.generate(carManager.getCarsSize());
     }
+
+    public List<String> winner() {
+        return carManager.findWinner();
+    }
 }

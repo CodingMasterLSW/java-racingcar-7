@@ -36,6 +36,9 @@ public class RacingController {
             outputView.printRacingResult(racingResult);
         }
 
+        List<String> winner = racingService.winner();
+        outputView.printWinnerMessage();
+        outputView.printWinnerResult(winner);
     }
 
 }
