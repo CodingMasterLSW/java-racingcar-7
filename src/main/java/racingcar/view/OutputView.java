@@ -22,7 +22,8 @@ public class OutputView {
 
     public void printRacingResult(List<Car> racingResult) {
         for (Car car : racingResult) {
-            System.out.print(car.getName()+ " : " + car.getDistance());
+            System.out.print(car.getName()+ " : ");
+            convertToHistogram(car.getDistance());
             printBlank();
         }
         printBlank();
@@ -34,6 +35,10 @@ public class OutputView {
 
     public void printWinnerMessage() {
         System.out.print(WINNER_MESSAGE);
+    }
+
+    private void convertToHistogram(int distance) {
+        System.out.print("-".repeat(distance));
     }
 
     private void printMessage(String message) {
