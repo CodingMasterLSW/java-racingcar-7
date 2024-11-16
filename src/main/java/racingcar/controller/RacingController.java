@@ -51,7 +51,6 @@ public class RacingController {
 
     private void winner(){
         List<String> winner = racingService.winner();
-        outputView.printWinnerMessage();
         outputView.printWinnerResult(winner);
     }
 

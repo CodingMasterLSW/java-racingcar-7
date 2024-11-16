@@ -6,7 +6,8 @@ import racingcar.domain.Car;
 public class OutputView {
 
     private static final String RUN_RESULT_MESSAGE = "실행 결과";
-    private static final String WINNER_MESSAGE = "최종 우승자 : ";
+    private static final String WINNER_MESSAGE = "최종 우승자 : %s";
+    private static final String HISTOGRAM = "-";
 
     private OutputView() {
     }
@@ -30,15 +31,11 @@ public class OutputView {
     }
 
     public void printWinnerResult(List<String> winners) {
-        System.out.println(String.join(", ", winners));
-    }
-
-    public void printWinnerMessage() {
-        System.out.print(WINNER_MESSAGE);
+        System.out.printf(WINNER_MESSAGE, String.join(", ", winners));
     }
 
     private void convertToHistogram(int distance) {
-        System.out.print("-".repeat(distance));
+        System.out.print(HISTOGRAM.repeat(distance));
     }
 
     private void printMessage(String message) {
